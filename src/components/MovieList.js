@@ -1,8 +1,8 @@
 import React from 'react';
-
+// MovieList is a functional component that displays a list of movies.
 const MovieList = (props) => {
 	const FavouriteComponent = props.favouriteComponent;
-
+// The FavouriteComponent is a component provided as a prop.
 	return (
 		<>
           

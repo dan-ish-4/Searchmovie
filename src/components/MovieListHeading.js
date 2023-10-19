@@ -1,5 +1,5 @@
 import React from 'react';
-
+// MovieListHeading is a functional component that displays a heading for a movie list.
 const MovieListHeading = (props) => {
 	return (
 		<div className='col'>

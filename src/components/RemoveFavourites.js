@@ -1,5 +1,5 @@
 import React from 'react';
-
+//This the RemoveFavourites functional component which renders the remove from favourites text with the cross icon
 const RemoveFavourites = () => {
 	return (
 		<>

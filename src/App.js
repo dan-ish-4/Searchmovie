@@ -8,13 +8,16 @@ import AddFavourite from './components/AddToFavourites';
 import RemoveFavourites from './components/RemoveFavourites';
 
 const App = () => {
+
+
+	// State variables for managing movies, favourites, and search value
 	const [movies, setMovies] = useState([]);
 	const [favourites, setFavourites] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
+
+    // Function to fetch movie data based on the search value
 	const getMovieRequest = async (searchValue) => {
-		//const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
-		
 		const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=5697be49`;
 		const response = await fetch(url);
 		const responseJson = await response.json();
@@ -24,10 +27,14 @@ const App = () => {
 		}
 	};
 
+
+	// useEffect to fetch movies when the searchValue changes
 	useEffect(() => {
 		getMovieRequest(searchValue);
 	}, [searchValue]);
 
+
+	// useEffect to retrieve and set favourites from local storage
 	useEffect(() => {
 		const movieFavourites = JSON.parse(
 			localStorage.getItem('react-movie-app-favourites')
@@ -36,15 +43,21 @@ const App = () => {
 		setFavourites(movieFavourites);
 	}, []);
 
+
+	// Function to save favourites to local storage
 	const saveToLocalStorage = (items) => {
 		localStorage.setItem('react-movie-app-favourites', JSON.stringify(items));
 	};
+  
 
+	// Function to add a movie to the favourites
 	const addFavouriteMovie = (movie) => {
 		const newFavouriteList =Array.isArray(favourites)? [...favourites, movie]:[movie];
 		setFavourites(newFavouriteList);
 		saveToLocalStorage(newFavouriteList);
 	};
+
+	// Function to remove a movie to the favourites
 
 	const removeFavouriteMovie = (movie) => {
 		const newFavouriteList = favourites.filter(
@@ -55,6 +68,8 @@ const App = () => {
 		saveToLocalStorage(newFavouriteList);
 	};
 
+
+	//this is going to render the UI 
 	return (
 		<div className='container-fluid movie-app'>
 			<div className='row d-flex align-items-center mt-4 mb-4'>

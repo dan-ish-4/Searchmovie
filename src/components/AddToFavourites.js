@@ -1,5 +1,6 @@
 import React from 'react';
-
+ // This is a functional component called AddFavourite.
+// It renders a "Add to Favourites" text with a heart icon.
 const AddFavourite = () => {
 	return (
 		<>
