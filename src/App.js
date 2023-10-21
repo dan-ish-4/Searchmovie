@@ -28,9 +28,13 @@ const App = () => {
 	};
 
 
-	// useEffect to fetch movies when the searchValue changes
+	// useEffect to fetch movies when the searchValue changes and debounce functionality is applied here...
 	useEffect(() => {
-		getMovieRequest(searchValue);
+		let timeOut = setTimeout(() => {
+			getMovieRequest(searchValue);
+			console.log(searchValue);
+		},1000);
+		return ()=> clearTimeout(timeOut);
 	}, [searchValue]);
 
 
